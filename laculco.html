@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel 3D Moderno</title>
+    <!-- Fuente moderna de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Fondo con degradado moderno y tu imagen de respaldo */
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-image: url('../image/fondo.jpg'), linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Capa oscura suave para que el texto e imágenes resalten */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            text-transform: uppercase;            letter-spacing: 3px;
+            /* Degradado en el texto con brillo */
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 198, 255, 0.5));
+        }
+
+        .content-all {
+            width: 240px;
+            height: 160px;
+            margin: auto;
+            perspective: 1000px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .content-carrousel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            animation: rotar 15s infinite linear;
+            transform-style: preserve-3d;
+        }
+
+        .content-carrousel:hover {
+            animation-play-state: paused;
+        }
+
+        .content-carrousel figure {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Efecto al pasar el mouse sobre la figura */
+        .content-carrousel figure:hover {
+            border-color: #00c6ff;
+            box-shadow: 0 0 25px rgba(0, 198, 255, 0.6), 0 0 50px rgba(0, 198, 255, 0.3);
+            z-index: 10;
+        }
+
+        /* Posicionamiento exacto de las 9 imágenes en el círculo 3D */        .content-carrousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(350px); }
+        .content-carrousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(350px); }
+
+        .content-carrousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        /* Zoom suave de la imagen dentro de su marco al hacer hover */
+        .content-carrousel figure:hover img {
+            transform: scale(1.15);
+        }
+
+        @keyframes rotar {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* Responsividad para móviles y tablets */
+        @media (max-width: 768px) {
+            .content-all {
+                width: 180px;
+                height: 120px;
+            }
+            /* Ajustamos la profundidad para pantallas pequeñas */
+            .content-carrousel figure:nth-child(1) { transform: rotateY(0deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(2) { transform: rotateY(40deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(3) { transform: rotateY(80deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(4) { transform: rotateY(120deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(5) { transform: rotateY(160deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(6) { transform: rotateY(200deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(7) { transform: rotateY(240deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(8) { transform: rotateY(280deg) translateZ(250px); }
+            .content-carrousel figure:nth-child(9) { transform: rotateY(320deg) translateZ(250px); }
+            
+            h2 {
+                font-size: 2rem;
+                margin-top: 40px;
+            }
+        }    </style>
+</head>
+<body>
+    <h2>Carrusel Magtimus</h2>
+    <div class="content-all">
+        <div class="content-carrousel">
+            <figure><img src="IMG_0640.jpg" alt="Imagen 1"></figure>
+            <figure><img src="IMG_8040.jpg" alt="Imagen 2"></figure>
+            <figure><img src="IMG_7792.jpg" alt="Imagen 3"></figure>
+            <figure><img src="IMG_7298.jpg" alt="Imagen 4"></figure>
+            <figure><img src="ccdr 2025-09-03 211553.904.jpg" alt="Imagen 5"></figure>
+            <figure><img src="IMG_4154.jpg" alt="Imagen 6"></figure>
+            <figure><img src="16B35D07-37E7-4C97-A8B1-C2540717D022.JPG" alt="Imagen 7"></figure>
+            <figure><img src="IMG_1421.JPG" alt="Imagen 8"></figure>
+            <figure><img src="IMG_1468.jpg" alt="Imagen 9"></figure>
+        </div>
+    </div>
+</body>
+</html>
